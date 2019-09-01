@@ -46,12 +46,28 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
     player = (player==1)? 0: 1;
     document.querySelector('.player-' + player + '-panel').classList.add('active');
 
-    if(scores[0] > 100){
-        alert('Player 1 YOU WON');
+    if(scores[0] >= 100){
+        document.getElementById('name-0').textContent = "WINNER!";
+        //document.getElementById('name-0').style.fontWeight = 'bold';
+        //document.getElementById('name-0').style.color = 'red';
+        document.querySelector('.player-0-panel').classList.add('winner');
+        document.querySelector('.btn-hold').style.display = 'none';
+        document.querySelector('.btn-roll').style.display = 'none';
+
+        document.querySelector('.player-' + player + '-panel').classList.remove('active');
     }
-    else if(scores[1] > 100){
-        alert('Player 2 YOU WON');
+    else if(scores[1] >= 100){
+        document.getElementById('name-1').textContent = "WINNER!";
+        //document.getElementById('name-1').style.fontWeight = 'bold';
+        //document.getElementById('name-1').style.color = 'red';
+        document.querySelector('.player-1-panel').classList.add('winner');
+        document.querySelector('.btn-hold').style.display = 'none';
+        document.querySelector('.btn-roll').style.display = 'none';
+
+        document.querySelector('.player-' + player + '-panel').classList.remove('active');
     }
+
+    
 });
 
 document.querySelector('.btn-new').addEventListener('click', function(){
@@ -68,4 +84,14 @@ document.querySelector('.btn-new').addEventListener('click', function(){
     document.getElementById('score-1').textContent = scores[1];
 
     document.querySelector('.dice').style.display = 'none';
+
+    document.getElementById('name-0').textContent = "PLAYER 1";
+    document.getElementById('name-0').style.fontWeight = 'normal';
+    document.getElementById('name-1').textContent = "PLAYER 2";
+    document.getElementById('name-1').style.fontWeight = 'normal';
+
+    document.querySelector('.btn-hold').style.display = 'block';
+    document.querySelector('.btn-roll').style.display = 'block';
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
 });
